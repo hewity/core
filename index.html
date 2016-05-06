@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-ng-app="core">
+<html lang="en" data-ng-app="app">
 <head>
   <meta charset="UTF-8">
   <title>CoRe</title>
@@ -9,8 +9,14 @@
   <script src="core_app/app.js"></script>
 </head>
 
-<body>
-  
+
+
+<body data-ng-app='app'>
+  <header>
+    {{2+2}}
+    <a data-ui-sref="home">Community Resource</a>
+  </header>
+
 
   <main data-ui-view></main>
 </body>
