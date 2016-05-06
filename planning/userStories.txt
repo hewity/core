@@ -1,1 +1,17 @@
-Test
+1. I want to be able to see posts and information in my area, so that I can get the most relevant information.
+
+2. i want to be able create posted and see information in my area so that I can get the most useful information.
+
+3. I want to be able comment on post, so that I can share additional information  with users.
+
+	3a. I want to be able to up vote a post.
+
+4. I want to be able see a list of topics for posts, so that I can I go to the most relevant information.
+
+5. I want to be able to  so that I can have access to information resources.
+
+6. I want to be able to translate in to the language I speak, so that I can understand.
+
+7. I want to be able to filter on location so that I can get my area of information.
+
+8. I want to be able to filter topics so that I can see the information I need most.
