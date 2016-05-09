@@ -30,6 +30,13 @@ PostsIndexControllerFunc.$inject=["$state", "PostFactory"]
 function PostsIndexControllerFunc($state, PostFactory){
   var postsIndexVm = this;
   postsIndexVm.posts = PostFactory.query()
+  postsIndexVm.newPost= new PostFactory();
+
+  postsIndexVm.create = function() {
+    postsIndexVm.newPost.$save().then(function(){
+      $state.go("postIndex", {}, {reload: true});
+    })
+  }
 }
 
 })();
