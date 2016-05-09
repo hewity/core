@@ -7,7 +7,13 @@
    <input type="text" data-ng-model = "postsIndexVm.newPost.location" placeholder="Location">
    <button type="submit">Add Post</button>
   </form>
-  <div data-ng-repeat="post in postsIndexVm.posts">
+<div data-ng-repeat="post in postsIndexVm.posts">
+  
   <p>
-</p>
+    <header>
+      {{postsIndexVm.topic}} in {{postsIndexVm.location}}
+    </header>
+    {{postsIndexVm.body}}
+  </p>
+
 </div>
