@@ -34,7 +34,7 @@ function PostsIndexControllerFunc($state, PostFactory){
 
   postsIndexVm.create = function() {
     postsIndexVm.newPost.$save().then(function(){
-      $state.go("postIndex", {}, {reload: true});
+      $state.go("postsIndex", {}, {reload: true});
     })
   }
 }
