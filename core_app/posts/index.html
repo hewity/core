@@ -11,7 +11,7 @@
 
   <p>
     <header>
-      {{post.topic}} in {{post.location}}
+      <a data-ui-sref="postsShow({id: post.id})">{{post.topic}} in {{post.location}}</a>
     </header>
     {{post.body}}
   </p>
