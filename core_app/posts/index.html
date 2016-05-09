@@ -1,6 +1,13 @@
 <h1>Posts</h1>
-<div data-ng-repeat="post in postsIndexVm.posts">
-<p>
-  {{post.topic}}
+
+<button data-ng-click ="newPostForm = !newPostForm" data-ng-hide = "newPostForm">Add Post</button>
+  <form data-ng-submit = "postsIndexVm.create()" data-ng-show = "newPostForm">
+   <input type="text" data-ng-model = "postsIndexVm.newPost.topic" placeholder="Topic">
+   <input type="text" data-ng-model = "postsIndexVm.newPost.body" placeholder="Body">
+   <input type="text" data-ng-model = "postsIndexVm.newPost.location" placeholder="Location">
+   <button type="submit">Add Post</button>
+  </form>
+  <div data-ng-repeat="post in postsIndexVm.posts">
+  <p>
 </p>
 </div>
