@@ -8,12 +8,12 @@
    <button type="submit">Add Post</button>
   </form>
 <div data-ng-repeat="post in postsIndexVm.posts">
-  
+
   <p>
     <header>
-      {{postsIndexVm.topic}} in {{postsIndexVm.location}}
+      {{post.topic}} in {{post.location}}
     </header>
-    {{postsIndexVm.body}}
+    {{post.body}}
   </p>
 
 </div>
