@@ -4,8 +4,11 @@
 <p>
   {{postsShowVm.post.body}}
 </p>
+
 <button data-ng-click="showEdit = !showEdit" data-ng-hide="showEdit">Edit Post</button>
-<form data-ng-submit = "postsShowVm.update()" data-ng-show = "editpostForm">
+<button data-ng-click="postsShowVm.delete()">Delete Post</button>
+
+<form data-ng-submit = "postsShowVm.update()" data-ng-show = "showEdit">
   <input type="text" data-ng-model = "postsShowVm.post.location" placeholder="Location">
   <input type="text" data-ng-model = "postsShowVm.post.topic" placeholder="Topic">
   <input type="text" data-ng-model = "postsShowVm.post.body" placeholder="Body">
