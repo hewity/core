@@ -15,7 +15,9 @@
 
   PostFactoryFunc.$inject=["$resource"];
   function PostFactoryFunc($resource){
-    return $resource("http://localhost:3000/posts/:id.json", {});
+    return $resource("http://localhost:3000/posts/:id.json", {}, {
+      update: { method: "PUT" }
+    });
   }
 
   function RouterFunction($stateProvider){
@@ -30,7 +32,7 @@
       templateUrl: "core_app/posts/show.html",
       controller: "PostsShowController",
       controllerAs: "postsShowVm"
-    })
+    });
   }
 
 PostsIndexControllerFunc.$inject=["$state", "PostFactory"];
@@ -50,11 +52,12 @@ PostsShowControllerFunc.$inject =["PostFactory", "$stateParams"];
 function PostsShowControllerFunc(PostFactory, $stateParams) {
   var postsShowVm = this;
   postsShowVm.post = PostFactory.get({id: $stateParams.id});
-  postsShowVm.update = function(){
-  postsShowVm.post.$update({id: $stateParams.id});
-};
 
-  postsShowVm.delete = function(){
+  postsShowVm.update = function() {
+    postsShowVm.post.$update({id: $stateParams.id});
+  };
+
+  postsShowVm.delete = function() {
     postsShowVm.post.$delete({id: $stateParams.id});
   };
 }
