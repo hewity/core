@@ -50,7 +50,6 @@ PostsShowControllerFunc.$inject =["PostFactory", "$stateParams"];
 function PostsShowControllerFunc(PostFactory, $stateParams) {
   var postsShowVm = this;
   postsShowVm.post = PostFactory.get({id: $stateParams.id});
-
   postsShowVm.update = function(){
   postsShowVm.post.$update({id: $stateParams.id});
 };
