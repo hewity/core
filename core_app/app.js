@@ -11,13 +11,20 @@
   ])
   .controller("PostsIndexController", PostsIndexControllerFunc)
   .controller("PostsShowController", PostsShowControllerFunc)
-  .factory("PostFactory", PostFactoryFunc);
+  .factory("PostFactory", PostFactoryFunc)
+  .factory("CommentFactory", CommentFactoryFunc);
+
 
   PostFactoryFunc.$inject=["$resource"];
   function PostFactoryFunc($resource){
     return $resource("http://localhost:3000/posts/:id.json", {}, {
       update: { method: "PUT" }
     });
+  }
+
+  CommentFactoryFunc.$inject=["$resource"];
+  function CommentFactoryFunc($resource){
+    return $resource("http://localhost:3000/posts/:id.json", {} );
   }
 
   function RouterFunction($stateProvider){
@@ -48,10 +55,11 @@ function PostsIndexControllerFunc($state, PostFactory) {
   };
 }
 
-PostsShowControllerFunc.$inject =["PostFactory", "$stateParams", "$state"];
-function PostsShowControllerFunc(PostFactory, $stateParams, $state) {
+PostsShowControllerFunc.$inject =["PostFactory", "CommentFactory", "$stateParams", "$state"];
+function PostsShowControllerFunc(PostFactory, CommentFactory, $stateParams, $state) {
   var postsShowVm = this;
   postsShowVm.post = PostFactory.get({id: $stateParams.id});
+  postsShowVm.newComment = new CommentFactory();
 
   postsShowVm.update = function() {
     postsShowVm.post.$update({id: $stateParams.id}).then(function() {
@@ -64,6 +72,10 @@ function PostsShowControllerFunc(PostFactory, $stateParams, $state) {
       $state.go("postsIndex", {}, {reload: true});
     });
   };
+
+  postsShowVm.createComment = function() {
+    postsShowVm.newComment.$save();
+  }
 }
 
 })();
