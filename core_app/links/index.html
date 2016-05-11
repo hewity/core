@@ -1,0 +1,17 @@
+<h1>Links</h1>
+
+<button data-ng-click ="newLinkForm = !newLinkForm" data-ng-hide = "newLinkForm">Add Link</button>
+  <form data-ng-submit = "linksIndexVm.create()" data-ng-show = "newLinkForm">
+   <input type="text" data-ng-model = "linksIndexVm.newLink.url" placeholder="link url">
+   <input type="text" data-ng-model = "linksIndexVm.newLink.about" placeholder="say a little about this link">
+   <button type="submit">Add Link</button>
+  </form>
+
+<div data-ng-repeat="link in linksIndexVm.linksList">
+  <p>
+    <header>
+      <a href="{{link.url}}">{{link.url}}</a>
+    </header>
+    {{link.about}}
+  </p>
+</div>

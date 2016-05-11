@@ -1,5 +1,8 @@
 
-<h2>{{postsShowVm.post.topic}}</h2>
+
+<h2>{{postspostsShowVm.post.topic}}</h2>
+<button data-ng-click="showEdit = !showEdit" data-ng-hide="showEdit">Edit Post</button>
+<form data-ng-submit = "postsShowVm.update()" data-ng-show = "editpostForm">
 <h4><i>{{postsShowVm.post.location}}</i></h4>
 <p>
   {{postsShowVm.post.body}}
@@ -12,9 +15,8 @@
 
 <button data-ng-click="showComment = !showComment" data-ng-hide="showComment">Post Comment</button>
 <form data-ng-submit ="postsShowVm.createComment()" data-ng-show = "showComment">
-  <input type="text" data-ng-model = "postsShowVm.comment.author" placeholder="Author">
-  <input type="text" data-ng-model = "postsShowVm.comment.body" placeholder="Type comment here">
-  <input type="hidden" data-ng-model = "postsShowVm.post.post_id">
+  <input type="text" data-ng-model = "postsShowVm.newComment.author" placeholder="Author">
+  <input type="text" data-ng-model = "postsShowVm.newComment.body" placeholder="Type comment here">
   <button type="submit">Post Comment</button>
 
 </form>

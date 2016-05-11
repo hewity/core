@@ -11,7 +11,9 @@
   ])
   .controller("PostsIndexController", PostsIndexControllerFunc)
   .controller("PostsShowController", PostsShowControllerFunc)
+  .controller("LinksIndexController", LinksIndexControllerFunc)
   .factory("PostFactory", PostFactoryFunc)
+  .factory("LinkFactory", LinkFactoryFunc)
   .factory("CommentFactory", CommentFactoryFunc);
 
 
@@ -22,9 +24,16 @@
     });
   }
 
+  LinkFactoryFunc.$inject=["$resource"];
+  function LinkFactoryFunc($resource){
+    return $resource("http://localhost:3000/links/:id.json", {}, {
+      update: { method: "PUT" }
+    });
+  }
+
   CommentFactoryFunc.$inject=["$resource"];
   function CommentFactoryFunc($resource){
-    return $resource("http://localhost:3000/posts/:id.json", {} );
+    return $resource("http://localhost:3000/comments/:id.json", {} );
   }
 
   function RouterFunction($stateProvider){
@@ -39,13 +48,19 @@
       templateUrl: "core_app/posts/show.html",
       controller: "PostsShowController",
       controllerAs: "postsShowVm"
+    })
+    .state("linksIndex", {
+      url: "/links",
+      templateUrl: "core_app/links/index.html",
+      controller: "LinksIndexController",
+      controllerAs: "linksIndexVm"
     });
   }
 
 PostsIndexControllerFunc.$inject=["$state", "PostFactory"];
 function PostsIndexControllerFunc($state, PostFactory) {
   var postsIndexVm = this;
-  postsIndexVm.posts = PostFactory.query();
+  postsIndexVm.posts = PostFactory.query(function(){ });
   postsIndexVm.newPost= new PostFactory();
 
   postsIndexVm.create = function() {
@@ -60,6 +75,18 @@ function PostsIndexControllerFunc($state, PostFactory) {
   };
 }
 
+LinksIndexControllerFunc.$inject=["$state", "LinkFactory"];
+function LinksIndexControllerFunc($state, LinkFactory) {
+  var linksIndexVm = this;
+  linksIndexVm.linksList = LinkFactory.query();
+  linksIndexVm.newLink= new LinkFactory();
+  linksIndexVm.create = function() {
+    linksIndexVm.newLink.$save().then(function(){
+      $state.go("linksIndex", {}, {reload: true});
+    });
+  };
+}
+
 PostsShowControllerFunc.$inject =["PostFactory", "CommentFactory", "$stateParams", "$state"];
 function PostsShowControllerFunc(PostFactory, CommentFactory, $stateParams, $state) {
   var postsShowVm = this;
@@ -68,7 +95,7 @@ function PostsShowControllerFunc(PostFactory, CommentFactory, $stateParams, $sta
 
   postsShowVm.update = function() {
     postsShowVm.post.$update({id: $stateParams.id}).then(function() {
-      $state.go("postsIndex", {}, {reload: true});
+      $state.go("postsShow({id: $stateParams.id})", {}, {reload: true});
     });
   };
 
@@ -79,8 +106,10 @@ function PostsShowControllerFunc(PostFactory, CommentFactory, $stateParams, $sta
   };
 
   postsShowVm.createComment = function() {
-    postsShowVm.newComment.$save();
-  }
+    var newCommentPost = postsShowVm.newComment;
+    newCommentPost.post_id = postsShowVm.post.id;
+    newCommentPost.$save();
+  };
 }
 
 })();
