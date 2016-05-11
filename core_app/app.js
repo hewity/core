@@ -17,14 +17,14 @@
 
   PostFactoryFunc.$inject=["$resource"];
   function PostFactoryFunc($resource){
-    return $resource("http://localhost:3000/posts/:id.json", {}, {
+    return $resource("https://community-resource.herokuapp.com/posts/:id.json", {}, {
       update: { method: "PUT" }
     });
   }
 
   CommentFactoryFunc.$inject=["$resource"];
   function CommentFactoryFunc($resource){
-    return $resource("http://localhost:3000/posts/:id.json", {} );
+    return $resource("https://community-resource.herokuapp.com/posts/:id.json", {} );
   }
 
   function RouterFunction($stateProvider){
