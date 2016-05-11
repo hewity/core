@@ -1,0 +1,1 @@
+	⁃	heroku run rails console: used to debug heroku a app
