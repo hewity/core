@@ -51,6 +51,11 @@ function PostsIndexControllerFunc($state, PostFactory) {
   postsIndexVm.create = function() {
     postsIndexVm.newPost.$save().then(function(){
       $state.go("postsIndex", {}, {reload: true});
+
+  postsIndexVm.sort_data_by = function(location){
+    postsIndexVm.sort_on = location;
+    postsIndexVm.is_descending = !(postsIndexVm.is_descending);
+  };
     });
   };
 }
