@@ -4,6 +4,10 @@
 <p>
   {{postsShowVm.post.body}}
 </p>
+Comments:
+<p data-ng-repeat="comment in postsShowVm.post.comments">
+  <i>{{comment.author}}</i> wrote: {{comment.body}}  
+</p>
 
 <button data-ng-click="showEdit = !showEdit" data-ng-hide="showEdit">Edit Post</button>
 <button data-ng-click="postsShowVm.delete()">Delete Post</button>
