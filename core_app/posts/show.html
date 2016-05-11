@@ -11,7 +11,7 @@
 <br>
 
 <button data-ng-click="showComment = !showComment" data-ng-hide="showComment">Post Comment</button>
-<form data-ng-submit ="postsShowVm.newComment()" data-ng-show = "showComment">
+<form data-ng-submit ="postsShowVm.createComment()" data-ng-show = "showComment">
   <input type="text" data-ng-model = "postsShowVm.comment.author" placeholder="Author">
   <input type="text" data-ng-model = "postsShowVm.comment.body" placeholder="Type comment here">
   <input type="hidden" data-ng-model = "postsShowVm.post.post_id">
