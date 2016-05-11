@@ -24,7 +24,7 @@
 
   CommentFactoryFunc.$inject=["$resource"];
   function CommentFactoryFunc($resource){
-    return $resource("http://localhost:3000/posts/:id.json", {} );
+    return $resource("http://localhost:3000/comments/:id.json", {} );
   }
 
   function RouterFunction($stateProvider){
@@ -63,7 +63,7 @@ function PostsShowControllerFunc(PostFactory, CommentFactory, $stateParams, $sta
 
   postsShowVm.update = function() {
     postsShowVm.post.$update({id: $stateParams.id}).then(function() {
-      $state.go("postsIndex", {}, {reload: true});
+      $state.go("postsShow({id: $stateParams.id})", {}, {reload: true});
     });
   };
 
@@ -74,8 +74,10 @@ function PostsShowControllerFunc(PostFactory, CommentFactory, $stateParams, $sta
   };
 
   postsShowVm.createComment = function() {
-    postsShowVm.newComment.$save();
-  }
+    var newCommentPost = postsShowVm.newComment;
+    newCommentPost.post_id = postsShowVm.post.id;
+    newCommentPost.$save();
+  };
 }
 
 })();
