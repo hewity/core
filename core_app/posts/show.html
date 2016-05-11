@@ -4,6 +4,7 @@
 <p>
   {{postsShowVm.post.body}}
 </p>
+
 Comments:
 <p data-ng-repeat="comment in postsShowVm.post.comments">
   <i>{{comment.author}}</i> wrote: {{comment.body}}
@@ -11,6 +12,22 @@ Comments:
 
 <button data-ng-click="showEdit = !showEdit" data-ng-hide="showEdit">Edit Post</button>
 <button data-ng-click="postsShowVm.delete()">Delete Post</button>
+<br>
+<br>
+
+<button data-ng-click="showComment = !showComment" data-ng-hide="showComment">Post Comment</button>
+<form data-ng-submit ="postsShowVm.createComment()" data-ng-show = "showComment">
+  <input type="text" data-ng-model = "postsShowVm.comment.author" placeholder="Author">
+  <input type="text" data-ng-model = "postsShowVm.comment.body" placeholder="Type comment here">
+  <input type="hidden" data-ng-model = "postsShowVm.post.post_id">
+  <button type="submit">Post Comment</button>
+
+</form>
+
+Comments:
+<p data-ng-repeat="comment in postsShowVm.post.comments">
+  <i>{{comment.author}}</i> wrote: {{comment.body}}
+</p>
 
 <form data-ng-submit = "postsShowVm.update()" data-ng-show = "showEdit">
   <input type="text" data-ng-model = "postsShowVm.post.location" placeholder="Location">
