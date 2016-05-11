@@ -1,2 +1,9 @@
 
-<h2>{{postsShowVm.post.topic}}</h2>
+<h2>{{postspostsShowVm.post.topic}}</h2>
+<button data-ng-click="showEdit = !showEdit" data-ng-hide="showEdit">Edit Post</button>
+<form data-ng-submit = "postsShowVm.update()" data-ng-show = "editpostForm">
+  <input type="text" data-ng-model = "postsShowVm.post.location" placeholder="Location">
+  <input type="text" data-ng-model = "postsShowVm.post.topic" placeholder="Topic">
+  <input type="text" data-ng-model = "postsShowVm.post.body" placeholder="Body">
+  <button type="submit">Update Post</button>
+</form>
