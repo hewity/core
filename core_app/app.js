@@ -48,17 +48,21 @@ function PostsIndexControllerFunc($state, PostFactory) {
   };
 }
 
-PostsShowControllerFunc.$inject =["PostFactory", "$stateParams"];
-function PostsShowControllerFunc(PostFactory, $stateParams) {
+PostsShowControllerFunc.$inject =["PostFactory", "$stateParams", "$state"];
+function PostsShowControllerFunc(PostFactory, $stateParams, $state) {
   var postsShowVm = this;
   postsShowVm.post = PostFactory.get({id: $stateParams.id});
 
   postsShowVm.update = function() {
-    postsShowVm.post.$update({id: $stateParams.id});
+    postsShowVm.post.$update({id: $stateParams.id}).then(function() {
+      $state.go("postsIndex", {}, {reload: true});
+    });
   };
 
   postsShowVm.delete = function() {
-    postsShowVm.post.$delete({id: $stateParams.id});
+    postsShowVm.post.$delete({id: $stateParams.id}).then(function() {
+      $state.go("postsIndex", {}, {reload: true});
+    });
   };
 }
 
