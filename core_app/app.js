@@ -24,8 +24,8 @@
     });
   }
 
-  LinksFactoryFunc.$inject=["$resource"];
-  function LinksFactoryFunc($resource){
+  LinkFactoryFunc.$inject=["$resource"];
+  function LinkFactoryFunc($resource){
     return $resource("http://localhost:3000/links/:id.json", {}, {
       update: { method: "PUT" }
     });
@@ -50,12 +50,11 @@
       controllerAs: "postsShowVm"
     })
     .state("linksIndex", {
-      url: "/links/:id",
+      url: "/links",
       templateUrl: "core_app/links/index.html",
       controller: "LinksIndexController",
       controllerAs: "linksIndexVm"
-    })
-    ;
+    });
   }
 
 PostsIndexControllerFunc.$inject=["$state", "PostFactory"];
@@ -74,9 +73,8 @@ function PostsIndexControllerFunc($state, PostFactory) {
 LinksIndexControllerFunc.$inject=["$state", "LinkFactory"];
 function LinksIndexControllerFunc($state, LinkFactory) {
   var linksIndexVm = this;
-  linksIndexVm.links_list = LinkFactory.query();
+  linksIndexVm.linksList = LinkFactory.query();
   linksIndexVm.newLink= new LinkFactory();
-
   linksIndexVm.create = function() {
     linksIndexVm.newLink.$save().then(function(){
       $state.go("linksIndex", {}, {reload: true});
