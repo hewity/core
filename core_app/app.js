@@ -74,7 +74,7 @@ function PostsShowControllerFunc(PostFactory, CommentFactory, $stateParams, $sta
   };
 
   postsShowVm.createComment = function() {
-    
+    postsShowVm.newComment.$save();
   }
 }
 
