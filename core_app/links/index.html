@@ -1,0 +1,51 @@
+<div class="container">
+<div class="row col-md-12">
+  <div class="page-header">
+    <h1>Links</h1>
+  </div>
+</div>
+
+<button class="btn btn-success" data-ng-click ="newLinkForm = !newLinkForm" data-ng-hide = "newLinkForm">Add Link</button>
+
+  <!-- <form data-ng-submit = "linksIndexVm.create()" data-ng-show = "newLinkForm">
+   <input type="text" data-ng-model = "linksIndexVm.newLink.url" placeholder="link url">
+   <input type="text" data-ng-model = "linksIndexVm.newLink.about" placeholder="say a little about this link">
+   <button type="submit">Add Link</button>
+  </form> -->
+
+<!-- new -->
+  <form data-ng-submit = "linksIndexVm.create()" data-ng-show = "newLinkForm">
+    <div class="form-group">
+      <label for="linkInput">Link Url</label>
+      <input type="text" class="form-control" data-ng-model = "linksIndexVm.newLink.url" id="urlInput" placeholder="link url">
+    </div>
+    <div class="form-group">
+      <label for="aboutInput">About</label>
+      <textarea class="form-control" data-ng-model = "linksIndexVm.newLink.about" id="aboutInput" placeholder="say a little bit about this link"></textarea>
+    </div>
+    <button type="submit" class="btn btn-success">Add Link</button>
+  </form>
+
+<!-- old  -->
+
+<!-- <div data-ng-repeat="link in linksIndexVm.linksList">
+  <p>
+    <header>
+      <a href="{{link.url}}">{{link.url}}</a>
+    </header>
+    {{link.about}}
+  </p>
+</div> -->
+
+<!-- new  -->
+<div class="row">
+  <div class="link" data-ng-repeat="link in linksIndexVm.linksList | filter:searchText">
+    <div class="clearfix" ng-if="$index % 3 == 0"></div>
+    <div class="col-md-4"><h2><a href="{{link.url}}">{{link.url}}</a></h2>
+      <p>{{link.about}}.</p>
+      <!-- <p><a class="btn btn-success" data-ui-sref="postsShow({id: post.id})" role="button">View details &raquo;</a></p> -->
+    </div>
+  </div>
+</div>
+
+</div>

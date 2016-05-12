@@ -1,20 +1,44 @@
-<h1>Posts</h1>
+<div class="container">
+  <div class="row col-md-12">
+    <div class="page-header">
+      <h1>Posts</h1>
+    </div>
+  </div>
 
-<button data-ng-click ="newPostForm = !newPostForm" data-ng-hide = "newPostForm">Add Post</button>
-  <form data-ng-submit = "postsIndexVm.create()" data-ng-show = "newPostForm">
-   <input type="text" data-ng-model = "postsIndexVm.newPost.topic" placeholder="Topic">
-   <input type="text" data-ng-model = "postsIndexVm.newPost.body" placeholder="Body">
-   <input type="text" data-ng-model = "postsIndexVm.newPost.location" placeholder="Location">
-   <button type="submit">Add Post</button>
-  </form>
-<div data-ng-repeat="post in postsIndexVm.posts">
 
-  <p>
-    <header>
-      <a data-ui-sref="postsShow({id: post.id})">{{post.topic}} in {{post.location}}</a>
-    </header>
-    {{post.body}}
-  </p>
-  <p><a data-ui-sref="postsShow({id: post.id})">{{posts.topic}}</a></p>
+  <!-- <button class="btn btn-primary" data-ng-click ="newPostForm = !newPostForm" data-ng-hide = "newPostForm">Add Post</button> -->
+  <!-- <form data-ng-submit = "postsIndexVm.create()" data-ng-show = "newPostForm">
+  <input type="text" data-ng-model = "postsIndexVm.newPost.topic" placeholder="Topic">
+  <input type="text" data-ng-model = "postsIndexVm.newPost.body" placeholder="Body">
+  <input type="text" data-ng-model = "postsIndexVm.newPost.location" placeholder="Location">
+  <button class="btn btn-info" type="submit">Add Post</button>
+</form> -->
+
+<form data-ng-submit = "postsIndexVm.create()" data-ng-show = "newPostForm">
+  <div class="form-group">
+    <label for="topicInput">Topic</label>
+    <input type="text" class="form-control" data-ng-model = "postsIndexVm.newPost.topic" id="topicInput" placeholder="Topic">
+  </div>
+  <div class="form-group">
+    <label for="bodyInput">Body</label>
+    <textarea class="form-control" data-ng-model = "postsIndexVm.newPost.body" id="bodyInput" placeholder="Body"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="locationInput">Location</label>
+    <input type="text" class="form-control" data-ng-model = "postsIndexVm.newPost.location" id="locationInput" placeholder="Location">
+  </div>
+  <button type="submit" class="btn btn-success">Add Post</button>
+</form>
+
+
+<div class="row">
+  <div data-ng-repeat="post in postsIndexVm.posts | filter:searchText">
+    <div class="clearfix" ng-if="$index % 3 == 0"></div>
+    <div class="col-md-4"><h2><a data-ui-sref="postsShow({id: post.id})">{{post.topic}} in {{post.location}}</a></h2>
+      <p>{{post.body}}.</p>
+      <p><a class="btn btn-primary" data-ui-sref="postsShow({id: post.id})" role="button">View details &raquo;</a></p>
+    </div>
+  </div>
+</div>
 
 </div>
