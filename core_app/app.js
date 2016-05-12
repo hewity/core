@@ -27,14 +27,14 @@
 
   LinkFactoryFunc.$inject=["$resource"];
   function LinkFactoryFunc($resource){
-    return $resource("http://localhost:3000/links/:id.json", {}, {
+    return $resource("https://community-resource.herokuapp.com/links/:id.json", {}, {
       update: { method: "PUT" }
     });
   }
 
   TagFactoryFunc.$inject=["$resource"];
   function TagFactoryFunc($resource){
-    return $resource("http://localhost:3000/tags/:id.json", {}, {
+    return $resource("https://community-resource.herokuapp.com/tags/:id.json", {}, {
       update: { method: "PUT" }
     });
   }
