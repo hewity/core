@@ -32,7 +32,8 @@
 
 
 <div class="row">
-  <div class="post" data-ng-repeat="post in postsIndexVm.posts | filter:searchText">
+  <div data-ng-repeat="post in postsIndexVm.posts | filter:searchText">
+    <div class="clearfix" ng-if="$index % 3 == 0"></div>
     <div class="col-md-4"><h2><a data-ui-sref="postsShow({id: post.id})">{{post.topic}} in {{post.location}}</a></h2>
       <p>{{post.body}}.</p>
       <p><a class="btn btn-primary" data-ui-sref="postsShow({id: post.id})" role="button">View details &raquo;</a></p>
