@@ -14,7 +14,8 @@
   .controller("LinksIndexController", LinksIndexControllerFunc)
   .factory("PostFactory", PostFactoryFunc)
   .factory("LinkFactory", LinkFactoryFunc)
-  .factory("CommentFactory", CommentFactoryFunc);
+  .factory("CommentFactory", CommentFactoryFunc)
+  .factory("TagFactory", TagFactoryFunc);
 
 
   PostFactoryFunc.$inject=["$resource"];
@@ -27,6 +28,13 @@
   LinkFactoryFunc.$inject=["$resource"];
   function LinkFactoryFunc($resource){
     return $resource("http://localhost:3000/links/:id.json", {}, {
+      update: { method: "PUT" }
+    });
+  }
+
+  TagFactoryFunc.$inject=["$resource"];
+  function TagFactoryFunc($resource){
+    return $resource("http://localhost:3000/tags/:id.json", {}, {
       update: { method: "PUT" }
     });
   }
