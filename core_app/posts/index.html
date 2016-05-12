@@ -1,18 +1,20 @@
 <h1>Posts</h1>
 
 <button data-ng-click ="newPostForm = !newPostForm" data-ng-hide = "newPostForm">Add Post</button>
-  <form data-ng-submit = "postsIndexVm.create()" data-ng-show = "newPostForm">
-   <input type="text" data-ng-model = "postsIndexVm.newPost.topic" placeholder="Topic">
-   <input type="text" data-ng-model = "postsIndexVm.newPost.body" placeholder="Body">
-   <input type="text" data-ng-model = "postsIndexVm.newPost.location" placeholder="Location">
-   <button type="submit">Add Post</button>
-  </form>
+
+<form data-ng-submit = "postsIndexVm.create()" data-ng-show = "newPostForm">
+  <input type="text" data-ng-model = "postsIndexVm.newPost.topic" placeholder="Topic">
+  <input type="text" data-ng-model = "postsIndexVm.newPost.body" placeholder="Body">
+  <input type="text" data-ng-model = "postsIndexVm.newPost.location" placeholder="Location">
+  <button type="submit">Add Post</button>
+</form>
+
 <div>
-<input type="text" data-ng-model = "searchText" placeholder="Location">
+  <input type="text" data-ng-model = "searchText" placeholder="Location">
 </div>
+
+
 <div data-ng-repeat="post in postsIndexVm.posts | filter:searchText">
-
-
   <p>
     <header>
       <a data-ui-sref="postsShow({id: post.id})">{{post.topic}} in {{post.location}}</a>
@@ -20,5 +22,4 @@
     {{post.body}}
   </p>
   <p><a data-ui-sref="postsShow({id: post.id})">{{posts.topic}}</a></p>
-
 </div>
