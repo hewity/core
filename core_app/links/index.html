@@ -40,6 +40,7 @@
 <!-- new  -->
 <div class="row">
   <div class="link" data-ng-repeat="link in linksIndexVm.linksList | filter:searchText">
+    <div class="clearfix" ng-if="$index % 3 == 0"></div>
     <div class="col-md-4"><h2><a href="{{link.url}}">{{link.url}}</a></h2>
       <p>{{link.about}}.</p>
       <!-- <p><a class="btn btn-success" data-ui-sref="postsShow({id: post.id})" role="button">View details &raquo;</a></p> -->
