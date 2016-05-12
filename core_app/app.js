@@ -15,6 +15,9 @@
   .factory("PostFactory", PostFactoryFunc)
   .factory("LinkFactory", LinkFactoryFunc)
   .factory("CommentFactory", CommentFactoryFunc);
+  .controller("LocationController", ['$scope',
+  function($scope)
+])
 
 
   PostFactoryFunc.$inject=["$resource"];
@@ -56,6 +59,9 @@
       controllerAs: "linksIndexVm"
     });
   }
+function LocationControllerFunc(PostFactory){
+
+}
 
 PostsIndexControllerFunc.$inject=["$state", "PostFactory"];
 function PostsIndexControllerFunc($state, PostFactory) {
