@@ -15,7 +15,12 @@
   .factory("PostFactory", PostFactoryFunc)
   .factory("LinkFactory", LinkFactoryFunc)
   .factory("CommentFactory", CommentFactoryFunc)
-  .factory("TagFactory", TagFactoryFunc);
+  .factory("TagFactory", TagFactoryFunc)
+  .directive("createPost",function(){
+    return {
+      templateUrl: "core_app/posts/create-post.html"
+    };
+  });
 
 
   PostFactoryFunc.$inject=["$resource"];

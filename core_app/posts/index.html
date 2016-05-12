@@ -5,31 +5,7 @@
     </div>
   </div>
 
-
-  <!-- <button class="btn btn-primary" data-ng-click ="newPostForm = !newPostForm" data-ng-hide = "newPostForm">Add Post</button> -->
-  <!-- <form data-ng-submit = "postsIndexVm.create()" data-ng-show = "newPostForm">
-  <input type="text" data-ng-model = "postsIndexVm.newPost.topic" placeholder="Topic">
-  <input type="text" data-ng-model = "postsIndexVm.newPost.body" placeholder="Body">
-  <input type="text" data-ng-model = "postsIndexVm.newPost.location" placeholder="Location">
-  <button class="btn btn-info" type="submit">Add Post</button>
-</form> -->
-
-<form data-ng-submit = "postsIndexVm.create()" data-ng-show = "newPostForm">
-  <div class="form-group">
-    <label for="topicInput">Topic</label>
-    <input type="text" class="form-control" data-ng-model = "postsIndexVm.newPost.topic" id="topicInput" placeholder="Topic">
-  </div>
-  <div class="form-group">
-    <label for="bodyInput">Body</label>
-    <textarea class="form-control" data-ng-model = "postsIndexVm.newPost.body" id="bodyInput" placeholder="Body"></textarea>
-  </div>
-  <div class="form-group">
-    <label for="locationInput">Location</label>
-    <input type="text" class="form-control" data-ng-model = "postsIndexVm.newPost.location" id="locationInput" placeholder="Location">
-  </div>
-  <button type="submit" class="btn btn-success">Add Post</button>
-</form>
-
+<create-post></create-post>
 
 <div class="row">
   <div data-ng-repeat="post in postsIndexVm.posts | filter:searchText">
