@@ -1,3 +1,9 @@
+// This file is complicated enough that it could benefit from being split up. An
+// easy win would be to keep only the route stuff here and move everything else
+// (direcive, controllers, factories) to another file. If you really wanted to
+// separate your concerns you could break out every controller, factory, &
+// directive into independent files
+
 "use strict";
 
 (function(){

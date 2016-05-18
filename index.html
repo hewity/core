@@ -129,7 +129,7 @@
   </div>
 
 
-
+<!-- If you've made a commit with this old code then you should feel comfortable deleting it -->
 
     <!-- Main jumbotron  -->
     <!-- <div class="jumbotron">
@@ -152,6 +152,11 @@
     </p>
   </div>
 </footer>
+
+<!-- There really isn't a good reason to use both jQuery and angular in conjunction, particuarly for dom manipulation. From the angular docs faq: -->
+<!-- "Stop trying to use jQuery to modify the DOM in controllers. Really. That includes adding elements, removing elements, retrieving their contents, showing and hiding them. Use built-in directives, or write your own where necessary, to do your DOM manipulation. See below about duplicating functionality.
+
+If you're struggling to break the habit, consider removing jQuery from your app. Really. Angular has the $http service and powerful directives that make it almost always unnecessary. Angular's bundled jQLite has a handful of the features most commonly used in writing Angular directives, especially binding to events." -->
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
